@@ -1,12 +1,21 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Open Sans Condensed", sans-serif;
+  padding: 20px 60px;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
 }
 
 .homepage {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 80px;
 }
 
 .directory-menu {
@@ -82,5 +91,285 @@ body {
       font-weight: lighter;
       font-size: 16px;
     }
+  }
+}
+
+.header {
+  height: 70px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+
+  .logo-container {
+    height: 100%;
+    width: 70px;
+    padding: 25px;
+  }
+
+  .options {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    .option {
+      padding: 10px 15px;
+      cursor: pointer;
+    }
+  }
+}
+
+.collection-preview {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+
+  .title {
+    font-size: 28px;
+    margin-bottom: 25px;
+  }
+
+  .preview {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.collection-item {
+  width: 22%;
+  display: flex;
+  flex-direction: column;
+  height: 350px;
+  align-items: center;
+  position: relative;
+
+  .image {
+    width: 100%;
+    height: 95%;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 5px;
+  }
+
+  .custom-button {
+    width: 80%;
+    opacity: 0.7;
+    position: absolute;
+    top: 255px;
+    display: none;
+  }
+
+  &:hover {
+    .image {
+      opacity: 0.8;
+    }
+
+    .custom-button {
+      opacity: 0.85;
+      display: flex;
+    }
+  }
+
+  .collection-footer {
+    width: 100%;
+    height: 5%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+
+    .name {
+      width: 90%;
+      margin-bottom: 15px;
+    }
+
+    .price {
+      width: 10%;
+    }
+  }
+}
+
+// sign in and sign up
+
+.sign-in-and-sign-up {
+  width: 850px;
+  display: flex;
+  justify-content: space-between;
+  margin: 30px auto;
+}
+
+.sign-in {
+  width: 380px;
+  display: flex;
+  flex-direction: column;
+
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.sign-up {
+  display: flex;
+  flex-direction: column;
+  width: 380px;
+
+  .title {
+    margin: 10px 0;
+  }
+}
+
+// Form input
+$sub-color: grey;
+$main-color: black;
+
+@mixin shrinkLabel {
+  top: -14px;
+  font-size: 12px;
+  color: $main-color;
+}
+
+.group {
+  position: relative;
+  margin: 45px 0;
+
+  .form-input {
+    background: none;
+    background-color: white;
+    color: $sub-color;
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid $sub-color;
+    margin: 25px 0;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus ~ .form-input-label {
+      @include shrinkLabel();
+    }
+  }
+
+  input[type="password"] {
+    letter-spacing: 0.3em;
+  }
+
+  .form-input-label {
+    color: $sub-color;
+    font-size: 16px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    transition: 300ms ease all;
+
+    &.shrink {
+      @include shrinkLabel();
+    }
+  }
+}
+
+// custom button
+.custom-button {
+  min-width: 165px;
+  width: auto;
+  height: 50px;
+  letter-spacing: 0.5px;
+  line-height: 50px;
+  padding: 0 35px 0 35px;
+  font-size: 15px;
+  background-color: black;
+  color: white;
+  text-transform: uppercase;
+  font-family: "Open Sans Condensed";
+  font-weight: bolder;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+
+  &:hover {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+  }
+
+  &.google-sign-in {
+    background-color: #4285f4;
+    color: white;
+
+    &:hover {
+      background-color: #357ae8;
+      border: none;
+    }
+  }
+
+  &.inverted {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+
+    &:hover {
+      background-color: black;
+      color: white;
+      border: none;
+    }
+  }
+}
+
+/* cartIcon */
+
+.cart-icon {
+  width: 45px;
+  height: 45px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  .shopping-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .item-count {
+    position: absolute;
+    font-size: 10px;
+    font-weight: bold;
+    bottom: 12px;
+  }
+}
+
+/* cartDropdown */
+.cart-dropdown {
+  position: absolute;
+  width: 240px;
+  height: 340px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border: 1px solid black;
+  background-color: white;
+  top: 90px;
+  right: 40px;
+  z-index: 5;
+
+  .cart-items {
+    height: 240px;
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+  }
+
+  button {
+    margin-top: auto;
   }
 }

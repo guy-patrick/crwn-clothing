@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { MenuItem } from "./MenuItem";
+import MenuItem from "./MenuItem";
 
 class Directory extends Component {
   constructor() {
